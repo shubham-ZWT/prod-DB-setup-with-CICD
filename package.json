@@ -1,0 +1,35 @@
+{
+  "name": "multi_db_version",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "env:load": "tsx src/scripts/load-env.ts",
+    "migrate:dev": "tsx src/scripts/migrate-dev.ts",
+    "migrate:deploy": "tsx src/scripts/migrate.ts",
+    "migrate:status": "tsx src/scripts/migrate-status.ts",
+    "db:generate": "prisma generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.21.0",
+    "prisma": "^7.8.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.9.1",
+    "@types/pg": "^8.20.0",
+    "tsx": "^4.20.6",
+    "typescript": "^6.0.3"
+  }
+}
