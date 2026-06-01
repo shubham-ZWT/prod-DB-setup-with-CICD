@@ -7,6 +7,8 @@ on:
 jobs:
   migrate:
     runs-on: ubuntu-latest
+    env:
+      DIRECT_URL: ${{ secrets.STAGING_DIRECT_URL }}
     steps:
       - uses: actions/checkout@v4
 
@@ -16,7 +18,8 @@ jobs:
 
       - run: npm ci
 
-      - name: Apply migrations to staging DB
-        env:
-          DIRECT_URL: ${{ secrets.STAGING_DIRECT_URL }}
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: Apply migrations
         run: npx prisma migrate deploy

@@ -7,6 +7,8 @@ on:
 jobs:
   migrate-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      DIRECT_URL: ${{ secrets.PRODUCTION_DIRECT_URL }}
     steps:
       - uses: actions/checkout@v4
 
@@ -19,9 +21,7 @@ jobs:
       - name: Generate Prisma client
         run: npx prisma generate
 
-      - name: Apply migrations to production DB
-        env:
-          DIRECT_URL: ${{ secrets.PRODUCTION_DIRECT_URL }}
+      - name: Apply migrations
         run: npx prisma migrate deploy
 
       - name: Build
