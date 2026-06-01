@@ -5,7 +5,7 @@ on:
     branches: [staging, develop]
 
 jobs:
-  migrate-and-deploy:
+  migrate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,11 +18,5 @@ jobs:
 
       - name: Apply migrations to staging DB
         env:
-          DATABASE_URL: ${{ secrets.STAGING_DATABASE_URL }}
-          NODE_ENV: staging
+          DIRECT_URL: ${{ secrets.STAGING_DIRECT_URL }}
         run: npx prisma migrate deploy
-
-      - name: Build & Deploy
-        run: |
-          npm run build
-          # your deploy step here (staging host)

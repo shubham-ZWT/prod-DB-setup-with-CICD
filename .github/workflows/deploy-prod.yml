@@ -18,11 +18,8 @@ jobs:
 
       - name: Apply migrations to production DB
         env:
-          DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
-          NODE_ENV: production
+          DIRECT_URL: ${{ secrets.PRODUCTION_DIRECT_URL }}
         run: npx prisma migrate deploy
 
-      - name: Build & Deploy
-        run: |
-          npm run build
-          # your deploy step here (AWS, Vercel, Render, etc.)
+      - name: Build
+        run: npm run build
