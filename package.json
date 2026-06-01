@@ -12,7 +12,7 @@
     "migrate:dev": "tsx src/scripts/migrate-dev.ts",
     "migrate:deploy": "tsx src/scripts/migrate.ts",
     "migrate:status": "tsx src/scripts/migrate-status.ts",
-    "db:generate": "prisma generate"
+    "db:generate": "tsx src/scripts/generate.ts"
   },
   "keywords": [],
   "author": "",
